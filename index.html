@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ótica Viva: o sistema simples para a sua ótica</title>
+<meta name="description" content="Pedidos, aviso no WhatsApp quando o óculos fica pronto, cobrança de quem está devendo, receitas, estoque e vendas do mês. Plano único de R$ 79 por mês.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Ótica Viva">
+<meta property="og:title" content="Ótica Viva: o sistema simples para a sua ótica">
+<meta property="og:description" content="Cada óculos no prazo, cada cliente avisado, cada saldo cobrado. Plano único de R$ 79 por mês.">
+<meta property="og:url" content="https://otica-viva-demonstracao.netlify.app/">
+<meta property="og:image" content="https://otica-viva-demonstracao.netlify.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://otica-viva-demonstracao.netlify.app/og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0E1626; --bg2:#131E33; --line:#243049; --tx:#EFE9DC; --mt:#8F99AC;
+  --gold:#C9AE76; --gold-hi:#E3CB93; --ok:#8DBFA0;
+  --fd:'Cormorant Garamond','Bitstream Charter',Georgia,'Times New Roman',serif;
+  --fb:'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.65 var(--fb);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1000px;margin-inline:auto;padding-inline:max(20px,env(safe-area-inset-left,0px))}
+a{color:inherit}
+:focus-visible{outline:1px solid var(--gold-hi);outline-offset:3px}
+
+header{border-bottom:1px solid var(--line)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:18px}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--fd);font-size:28px;font-weight:600;text-decoration:none}
+.brand svg{width:42px;height:23px;color:var(--gold)}
+.brand i{font-style:normal;color:var(--gold)}
+.top a.lk{font-size:11.5px;letter-spacing:2.2px;text-transform:uppercase;color:var(--mt);text-decoration:none;transition:color .2s}
+.top a.lk:hover{color:var(--tx)}
+
+.bt{display:inline-block;background:transparent;color:var(--gold-hi);border:1px solid var(--gold);border-radius:1px;font:500 12px var(--fb);letter-spacing:2.2px;text-transform:uppercase;padding:15px 24px;text-decoration:none;cursor:pointer;text-align:center;transition:background .2s,color .2s,transform .1s}
+.bt:hover{background:var(--gold);color:var(--bg)}
+.bt:active{transform:scale(.97)}
+.bt.sec{border-color:var(--line);color:var(--mt)}
+.bt.sec:hover{border-color:var(--mt);background:transparent;color:var(--tx)}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+
+.ey{margin:0 0 14px;font-size:11.5px;letter-spacing:2.6px;text-transform:uppercase;color:var(--gold)}
+h1,h2,h3{font-family:var(--fd);font-weight:500;margin:0;text-wrap:balance}
+h1{font-size:clamp(44px,8vw,84px);line-height:1.02;letter-spacing:-.5px}
+h1 em,h2 em{font-style:normal;color:var(--gold-hi)}
+h2{font-size:clamp(34px,5vw,52px);line-height:1.08}
+.sub{margin:22px 0 32px;max-width:56ch;color:var(--mt);font-size:18px}
+
+.hero{padding-block:clamp(56px,10vw,110px) clamp(48px,8vw,90px)}
+section{border-top:1px solid var(--line);padding-block:clamp(52px,8vw,88px)}
+.hero{border-top:0}
+.intro{max-width:60ch;color:var(--mt);margin:18px 0 0}
+
+/* problema -> solução */
+.pares{margin-top:38px}
+.par{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,5vw,64px);padding:26px 0;border-top:1px solid var(--line)}
+.par:last-child{border-bottom:1px solid var(--line)}
+.par .p{font-family:var(--fd);font-size:clamp(22px,3.2vw,28px);line-height:1.2;color:var(--tx)}
+.par .s{color:var(--mt)}
+.par .s b{display:block;margin-bottom:4px;font:500 11px var(--fb);letter-spacing:2.2px;text-transform:uppercase;color:var(--gold)}
+
+/* oito botões */
+.menu{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:38px}
+.card{border:1px solid var(--line);padding:22px 20px 20px;transition:border-color .2s,background .2s}
+.card:hover{border-color:var(--gold);background:var(--bg2)}
+.card svg{width:30px;height:30px;color:var(--gold);fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;margin-bottom:14px;display:block}
+.card h3{font-size:25px;font-weight:600;line-height:1.1}
+.card p{margin:6px 0 0;font-size:14px;line-height:1.5;color:var(--mt)}
+
+/* passos */
+.passos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,4vw,48px);margin-top:38px;counter-reset:p}
+.passo{border-top:1px solid var(--gold);padding-top:18px;counter-increment:p}
+.passo::before{content:"0" counter(p);display:block;font-family:var(--fd);font-size:44px;line-height:1;color:var(--gold-hi);margin-bottom:10px}
+.passo h3{font-size:26px;font-weight:600}
+.passo p{margin:6px 0 0;color:var(--mt)}
+
+/* plano */
+.plano{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,6vw,72px);align-items:center;margin-top:38px}
+.preco{border:1px solid var(--gold);padding:clamp(28px,5vw,48px);text-align:left}
+.preco .n{font-family:var(--fd);font-size:clamp(64px,10vw,104px);line-height:.95;font-weight:600;color:var(--gold-hi)}
+.preco .n small{font-size:.32em;font-weight:500;color:var(--mt);margin-left:6px;letter-spacing:0}
+.preco .l{margin:12px 0 26px;font-size:11.5px;letter-spacing:2.4px;text-transform:uppercase;color:var(--mt)}
+.preco .bt{display:block}
+.inc{list-style:none;margin:0;padding:0}
+.inc li{display:flex;gap:14px;padding:13px 0;border-top:1px solid var(--line)}
+.inc li:last-child{border-bottom:1px solid var(--line)}
+.inc li::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:var(--ok);margin-top:.7em}
+
+/* perguntas */
+.faq{margin-top:34px;max-width:760px}
+details{border-top:1px solid var(--line);padding:18px 0}
+details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;font-family:var(--fd);font-size:25px;font-weight:600;line-height:1.2}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--gold);font-family:var(--fb);font-weight:400;font-size:24px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin:10px 0 0;color:var(--mt);max-width:62ch}
+
+.final{text-align:left}
+.final .sub{margin-bottom:28px}
+footer{border-top:1px solid var(--line);padding-block:26px 34px;font-size:13px;color:var(--mt)}
+footer .in{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:820px){
+  .par{grid-template-columns:1fr;gap:8px}
+  .menu{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .card{padding:18px 14px 16px}
+  .card h3{font-size:22px}
+  .passos{grid-template-columns:1fr}
+  .plano{grid-template-columns:1fr}
+  .bt{width:100%}
+  .btns{flex-direction:column}
+  .top a.lk{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap top">
+    <a class="brand" href="#inicio" aria-label="Ótica Viva">
+      <svg viewBox="0 0 44 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="13" r="8.5"/><circle cx="33" cy="13" r="8.5"/><path d="M19.5 12c1.6-1.8 3.4-1.8 5 0"/></svg>
+      <span>Ótica <i>Viva</i></span>
+    </a>
+    <a class="lk" href="demo.html" target="_blank" rel="noopener">Ver o sistema funcionando</a>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <section class="hero">
+    <div class="wrap">
+      <p class="ey">Sistema para óticas</p>
+      <h1>Cada óculos no prazo.<br>Cada cliente avisado.<br><em>Cada saldo cobrado.</em></h1>
+      <p class="sub">A Ótica Viva organiza os seus pedidos, avisa o cliente no WhatsApp quando o óculos fica pronto e mostra quem está devendo. Simples de usar, no celular ou no computador.</p>
+      <div class="btns">
+        <a class="bt js-zap" href="#contato">Quero uma demonstração</a>
+        <a class="bt sec" href="demo.html" target="_blank" rel="noopener">Testar agora, sem cadastro</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="problemas">
+    <div class="wrap">
+      <p class="ey">O dia a dia</p>
+      <h2>O que atrapalha, e como a Ótica Viva resolve</h2>
+      <div class="pares">
+        <div class="par">
+          <div class="p">“O óculos ficou pronto, mas o cliente nem sabe.”</div>
+          <div class="s"><b>Aviso no WhatsApp</b>Marque o pedido como pronto e toque em <em>Avisar cliente</em>. O WhatsApp abre com a mensagem já escrita, é só enviar.</div>
+        </div>
+        <div class="par">
+          <div class="p">“O pagamento está anotado à mão, na receita.”</div>
+          <div class="s"><b>Pagamento no sistema</b>Valor total, quanto já foi pago, o saldo e a data de vencimento ficam registrados junto de cada pedido.</div>
+        </div>
+        <div class="par">
+          <div class="p">“Tem gente devendo e ninguém lembra de cobrar.”</div>
+          <div class="s"><b>Tela de devedores</b>Veja quem passou do vencimento, com o valor já somado de multa e juros, e cobre com um toque.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="botoes">
+    <div class="wrap">
+      <p class="ey">Por dentro</p>
+      <h2>Tudo em <em>oito botões</em></h2>
+      <p class="intro">Ao entrar, você vê uma tela com os botões. Cada um abre uma página, sem nada empilhado e sem menus escondidos.</p>
+      <div class="menu">
+        <div class="card"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="1"/><path d="M9 4h6v3H9zM8.5 12h7M8.5 16h5"/></svg><h3>Pedidos</h3><p>Cadastre o pedido, veja o que está atrasado e o que está pronto.</p></div>
+        <div class="card"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6"/><circle cx="17" cy="9" r="2.4"/><path d="M16 14.2c2.8 0 5 2 5 5.2"/></svg><h3>Clientes</h3><p>Uma galeria com todos os clientes, WhatsApp e histórico de compras.</p></div>
+        <div class="card"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 7.5v9M14.5 9.5c-.6-.8-1.5-1.1-2.5-1.1-1.4 0-2.5.7-2.5 1.8 0 2.4 5 1.2 5 3.6 0 1.1-1.1 1.8-2.5 1.8-1.1 0-2-.4-2.7-1.2"/></svg><h3>Devedores</h3><p>Quem está devendo, o valor atualizado e o botão de cobrar.</p></div>
+        <div class="card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M7 20v-7M12 20V6M17 20v-10"/></svg><h3>Vendas do mês</h3><p>Quanto vendeu, quanto já recebeu e quanto ainda falta receber.</p></div>
+        <div class="card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 8L12 4l8.5 4v8L12 20l-8.5-4zM3.5 8L12 12l8.5-4M12 12v8"/></svg><h3>Estoque</h3><p>Suas armações na loja, com aviso das que estão acabando.</p></div>
+        <div class="card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h8l4 4v14H7z"/><path d="M15 3v4h4M10 12h6M10 16h6"/></svg><h3>Receitas</h3><p>Tire uma foto da receita e guarde junto do cadastro do cliente.</p></div>
+        <div class="card"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4l-2 5 4 3-3 4 1 4"/></svg><h3>Prejuízo</h3><p>Registre lente quebrada e veja qual laboratório mais custa para você.</p></div>
+        <div class="card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11h16v9H4zM3 8h18v3H3zM12 8v12M12 8c-1.5-3-5-3-5-1 0 1.5 3 1 5 1zM12 8c1.5-3 5-3 5-1 0 1.5-3 1-5 1z"/></svg><h3>Aniversariantes</h3><p>Quem faz aniversário esta semana, com botão para dar parabéns.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="comecar">
+    <div class="wrap">
+      <p class="ey">Como começa</p>
+      <h2>Em três passos</h2>
+      <div class="passos">
+        <div class="passo"><h3>Peça uma demonstração</h3><p>Chame no WhatsApp. Eu mostro o sistema funcionando e tiro as suas dúvidas.</p></div>
+        <div class="passo"><h3>Receba o seu acesso</h3><p>Eu crio o login da sua ótica. Só você e sua equipe entram, com e-mail e senha.</p></div>
+        <div class="passo"><h3>Cadastre o primeiro pedido</h3><p>Leva poucos minutos. Daí em diante, cada pedido já nasce com prazo e aviso.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="plano">
+    <div class="wrap">
+      <p class="ey">Plano único</p>
+      <h2>Um preço, <em>tudo incluso</em></h2>
+      <div class="plano">
+        <div class="preco">
+          <div class="n">R$&nbsp;79<small>/mês</small></div>
+          <p class="l">Todos os recursos, sem plano escondido</p>
+          <a class="bt js-assinar" href="#contato">Assinar agora</a>
+          <p class="l" style="margin-top:14px">Cobrança mensal pelo Mercado Pago. Depois de assinar, eu crio o seu acesso e te envio o login pelo WhatsApp.</p>
+        </div>
+        <ul class="inc">
+          <li>Pedidos e aviso no WhatsApp quando fica pronto</li>
+          <li>Cobrança de devedores, com multa e juros</li>
+          <li>Galeria de clientes e aniversariantes</li>
+          <li>Fotos das receitas guardadas com segurança</li>
+          <li>Estoque de armações e vendas do mês</li>
+          <li>Controle de prejuízo com lentes quebradas</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="seguranca">
+    <div class="wrap">
+      <p class="ey">Confiança</p>
+      <h2>Os dados da sua ótica são <em>só seus</em></h2>
+      <p class="intro">Cada ótica entra com o próprio e-mail e senha e enxerga apenas o que é dela. As fotos das receitas ficam numa pasta privada, que só abre para quem está logado na sua ótica.</p>
+    </div>
+  </section>
+
+  <section id="perguntas">
+    <div class="wrap">
+      <p class="ey">Perguntas</p>
+      <h2>O que as óticas costumam perguntar</h2>
+      <div class="faq">
+        <details><summary>Preciso instalar alguma coisa?</summary><p>Não. O sistema abre no navegador, no celular ou no computador. Basta entrar com o seu e-mail e a sua senha.</p></details>
+        <details><summary>Posso testar antes de decidir?</summary><p>Pode. Existe uma demonstração aberta, com dados de exemplo, em que você pode mexer à vontade. Depois, se quiser, eu mostro tudo ao vivo no WhatsApp.</p></details>
+        <details><summary>Como pago a assinatura?</summary><p>A cobrança é mensal, feita pelo Mercado Pago. As formas de pagamento aparecem na tela do Mercado Pago, na hora de assinar.</p></details>
+        <details><summary>Já assinei. E agora?</summary><p>Me chame no WhatsApp com o e-mail que você quer usar no sistema. Eu crio o seu acesso e te aviso.</p></details>
+        <details><summary>O cliente recebe o aviso sozinho?</summary><p>O sistema abre o seu WhatsApp com a mensagem pronta, e você toca em enviar. Assim a mensagem sai do número da sua ótica, que o cliente já conhece.</p></details>
+        <details><summary>Dá para usar com mais de uma pessoa na loja?</summary><p>Dá. A equipe pode usar o mesmo login e ver os mesmos pedidos, cada um no seu aparelho.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="final" id="contato">
+    <div class="wrap">
+      <p class="ey">Vamos conversar</p>
+      <h2>Quer ver na <em>sua ótica</em>?</h2>
+      <p class="sub">Me chame no WhatsApp. Eu mostro o sistema e respondo as suas dúvidas, sem compromisso.</p>
+      <div class="btns">
+        <a class="bt js-assinar" href="#plano">Assinar agora</a>
+        <a class="bt sec js-zap" href="#contato">Chamar no WhatsApp</a>
+        <a class="bt sec" href="demo.html" target="_blank" rel="noopener">Testar a demonstração</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap in">
+    <span>Ótica Viva · um sistema InancyDev</span>
+    <span>Joinville, SC</span>
+  </div>
+</footer>
+
+<script>
+/* Número do WhatsApp para os botões "Chamar no WhatsApp".
+   Escreva com 55 + DDD + número, só dígitos. Exemplo: "5547999999999" */
+var WHATSAPP = "5547997657281";
+/* Link da assinatura criado no Mercado Pago (plano de R$ 79 por mês). Cole entre as aspas. */
+var LINK_ASSINATURA = "";
+var MENSAGEM = "Olá! Vi a página da Ótica Viva e quero uma demonstração para a minha ótica.";
+
+(function(){
+  var ass = document.querySelectorAll('.js-assinar');
+  if (LINK_ASSINATURA){ for (var k = 0; k < ass.length; k++){ ass[k].href = LINK_ASSINATURA; ass[k].target = '_blank'; ass[k].rel = 'noopener'; } }
+  var links = document.querySelectorAll('.js-zap');
+  var numero = String(WHATSAPP).replace(/\D/g, '');
+  for (var i = 0; i < links.length; i++){
+    if (numero){
+      links[i].href = 'https://wa.me/' + numero + '?text=' + encodeURIComponent(MENSAGEM);
+      links[i].target = '_blank';
+      links[i].rel = 'noopener';
+    }
+  }
+})();
+</script>
+</body>
+</html>
